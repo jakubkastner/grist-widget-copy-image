@@ -37,10 +37,3 @@
     cursor: not-allowed;
     box-shadow: none;
 }
-
-.status {
-    margin-top: 8px;
-    font-size: 12px;
-    height: 16px;
-    color: #333;
-}
