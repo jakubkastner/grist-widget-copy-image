@@ -9,10 +9,18 @@ jobs:
   notify:
     runs-on: ubuntu-latest
     steps:
+      - name: Format repository name
+        id: format_name
+        # Remove prefix "grist-widget-"
+        run: |
+          REPO_NAME="${{ github.event.repository.name }}"
+          FOLDER_NAME="${REPO_NAME#grist-widget-}"
+          echo "folder=$FOLDER_NAME" >> $GITHUB_OUTPUT
+
       - name: Send event to central repo
         uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repository: jakubkastner/grist-widgets
           event-type: update-specific-widget
-          client-payload: '{"widget_name": "${{ shadow github.event.repository.name == ''grist-widget-'' && '''' || '''' }}"}'
+          client-payload: '{"widget_name": "${{ steps.format_name.outputs.folder }}"}'
