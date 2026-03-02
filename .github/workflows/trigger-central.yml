@@ -1,0 +1,18 @@
+name: Notify Central Repo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send event to central repo
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repository: jakubkastner/grist-widgets
+          event-type: update-specific-widget
+          client-payload: '{"widget_name": "${{ github.event.repository.name }}"}'
