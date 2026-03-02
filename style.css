@@ -10,17 +10,17 @@
 }
 
 .btn {
-    background-color: #169BD7;
-    color: white;
+    background-color: #555563;
+    color: #92a4b1;
     border: none;
-    padding: 10px 20px;
+    padding: 8px;
     border-radius: 4px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s;
     width: 100%;
-    max-width: 200px;
+    max-width: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -29,11 +29,11 @@
 }
 
 .btn:hover {
-    background-color: #1178a8;
+    background-color: #70707d;
 }
 
 .btn:disabled {
-    background-color: #ccc;
+    background-color: transparent;
     cursor: not-allowed;
     box-shadow: none;
 }
